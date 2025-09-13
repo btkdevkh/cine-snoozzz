@@ -1,0 +1,12 @@
+@import './base.css';
+@import 'tailwindcss';
+
+hr {
+  border: none;
+  height: 1px;
+  background-color: #ddd;
+}
+
+img {
+  width: 100%;
+}
