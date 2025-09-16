@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { defineEmits } from 'vue'
+import CloseIcon from '@/components/icons/CloseIcon.vue'
 
 defineProps({
   url: {
@@ -17,12 +18,12 @@ const emit = defineEmits(['close'])
 <template>
   <div :class="`absolute left-0 right-0 ${position === 'top' ? 'top-0' : 'bottom-0'} z-10`">
     <button
-      class="py-1.5 px-3 bg-red-700 uppercase font-semibold rounded-2xl absolute right-3 top-3 cursor-pointer z-20"
+      class="py-1.5 px-2 bg-red-700 uppercase font-semibold absolute right-0 top-0 cursor-pointer z-20"
       @click="emit('close')"
     >
-      Close
+      <CloseIcon />
     </button>
-    <video :src="url" controls class="w-full rounded-2xl" autoplay></video>
+    <video :src="url" controls class="w-full" autoplay></video>
   </div>
 </template>
 <style scoped></style>

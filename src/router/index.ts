@@ -1,3 +1,4 @@
+import { useAuthStore } from '@/stores/auth'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
@@ -39,6 +40,24 @@ const router = createRouter({
       component: () => import('@/views/NotFoundView.vue'),
     },
   ],
+})
+
+// Guard global
+router.beforeEach((to, from, next) => {
+  const { isAdmin } = useAuthStore()
+  const adminRoutes = ['member', 'movie', 'admin', 'profile']
+
+  if (!isAdmin && adminRoutes.includes(to.name as string)) {
+    next('/identity/login')
+  } else if (
+    (isAdmin && to.path === '/') ||
+    (isAdmin && to.path === '/identity') ||
+    (isAdmin && to.path === '/identity/login')
+  ) {
+    next('/identity/member')
+  } else {
+    next()
+  }
 })
 
 export default router

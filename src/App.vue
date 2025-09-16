@@ -1,20 +1,13 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
-import { RouterView, useRouter } from 'vue-router'
+import { RouterView } from 'vue-router'
 import Navbar from '@/components/Navbar.vue'
+import { useAuthStore } from './stores/auth'
+import MainFooter from '@/components/MainFooter.vue'
 
-const isAdmin = ref(true)
-const router = useRouter()
-
-onMounted(() => {
-  if (!isAdmin.value) {
-    router.push('/identity')
-  } else {
-    router.push('/identity/member')
-  }
-})
+const { isAdmin } = useAuthStore()
 </script>
 <template>
   <Navbar v-if="isAdmin" />
   <RouterView />
+  <MainFooter />
 </template>

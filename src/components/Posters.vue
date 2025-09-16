@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="T extends IMovie">
-import { computed, onUnmounted, ref, toRefs, watch } from 'vue'
+import { computed, onMounted, onUnmounted, ref, toRefs, watch } from 'vue'
 import Loader from '@/components/Loader.vue'
 import { RouterLink } from 'vue-router'
 import ChevronLeftIcon from '@/components/icons/ChevronLeftIcon.vue'
@@ -73,6 +73,13 @@ watch([posters], (newVal) => {
   }
 })
 
+onMounted(() => {
+  if (length.value > 1) {
+    handleClearInterval()
+    timer = setInterval(() => incrementPosterIndex(), 5000)
+  }
+})
+
 // cleanup
 onUnmounted(() => {
   handleClearInterval()
@@ -103,7 +110,7 @@ onUnmounted(() => {
         </div>
 
         <RouterLink to="#" @click="handleChangeVideoIndex(defaultPosterIndex)">
-          <div class="w-full h-[450px] rounded-lg">
+          <div class="w-full h-[550px] rounded-lg">
             <img
               :src="posters[defaultPosterIndex].imagePath"
               :alt="posters[defaultPosterIndex].title"

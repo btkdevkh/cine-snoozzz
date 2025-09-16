@@ -8,13 +8,14 @@ import ListIcon from '@/components/icons/ListIcon.vue'
 import { useBreakpoint } from '@/composables/useBreakpoint'
 import AdminBuildingIcon from './icons/AdminBuildingIcon.vue'
 import Logo from '@/components/Logo.vue'
+import { useAuthStore } from '@/stores/auth'
 
 // import SerieIcon from '@/components/icons/SerieIcon.vue'
 // import OriginalIcon from '@/components/icons/OriginalIcon.vue'
 // import WatchlistIcon from '@/components/icons/WatchlistIcon.vue'
 
-const isAdmin = ref(true)
 const router = useRouter()
+const { isAdmin } = useAuthStore()
 const { current } = useBreakpoint()
 const restMenuItems = ref(false)
 
