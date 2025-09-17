@@ -20,6 +20,16 @@ const router = createRouter({
       component: () => import('@/views/MemberView.vue'),
     },
     {
+      path: '/identity/member/search',
+      name: 'search',
+      component: () => import('@/views/MemberSearchView.vue'),
+    },
+    {
+      path: '/identity/member/search/:page',
+      name: 'search/page',
+      component: () => import('@/views/MemberSearchView.vue'),
+    },
+    {
       path: '/identity/member/movie',
       name: 'movie',
       component: () => import('@/views/movie/MemberMovieView.vue'),
@@ -50,7 +60,7 @@ const router = createRouter({
 // Guard global
 router.beforeEach((to, from, next) => {
   const { isAdmin } = useAuthStore()
-  const adminRoutes = ['member', 'movie', 'admin', 'profile']
+  const adminRoutes = ['member', 'movie', 'search', 'admin', 'profile']
 
   if (!isAdmin && adminRoutes.includes(to.name as string)) {
     next('/identity/login')

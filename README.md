@@ -1,7 +1,8 @@
 # CinéSnooZzz
 
-![Equipment Observer Home](https://github.com/btkdevkh/cine-snoozzz/blob/main/public/home.png?raw=true)
-![Equipment Observer Create](https://github.com/btkdevkh/cine-snoozzz/blob/main/public/create.png?raw=true)
+![CinéSnooZzz Home](https://github.com/btkdevkh/cine-snoozzz/blob/main/public/home.png?raw=true)
+![CinéSnooZzz Create](https://github.com/btkdevkh/cine-snoozzz/blob/main/public/create.png?raw=true)
+![CinéSnooZzz Search](https://github.com/btkdevkh/cine-snoozzz/blob/main/public/search.png?raw=true)
 
 ## Customize configuration
 

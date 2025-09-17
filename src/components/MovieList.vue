@@ -8,6 +8,7 @@ import VideoPlayer from '@/components/VideoPlayer.vue'
 const props = defineProps<{
   isPending: boolean
   items: T[]
+  title?: string
 }>()
 
 const videoIndex = ref<number>(0)
@@ -30,7 +31,7 @@ const handleCloseVideoPlayer = () => {
       class="w-fit text-xl font-semibold border-b border-b-amber-300"
       v-if="posters && posters.length > 0"
     >
-      Recents Movies
+      {{ !title ? 'Recents Movies' : title }}
     </h2>
     <Loader v-if="isPending" />
 
@@ -71,7 +72,7 @@ const handleCloseVideoPlayer = () => {
       class="flex flex-col items-center justify-center h-[400px]"
     >
       <p class="text-center text-white text-2xl">
-        Le serveur n'est pas disponible, veuillez revenir plus tard.
+        {{ !title ? "Le serveur n'est pas disponible, veuillez revenir plus tard." : '' }}
       </p>
     </div>
   </div>
