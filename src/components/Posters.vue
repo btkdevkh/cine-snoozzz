@@ -69,6 +69,7 @@ const handleClearInterval = () => clearInterval(timer)
 
 watch([posters], (newVal) => {
   if (length.value > 1) {
+    handleClearInterval()
     timer = setInterval(() => incrementPosterIndex(), 5000)
   }
 })

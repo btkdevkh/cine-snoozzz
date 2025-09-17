@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { defineEmits } from 'vue'
 import CloseIcon from '@/components/icons/CloseIcon.vue'
 
 defineProps({

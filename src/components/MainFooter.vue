@@ -6,13 +6,16 @@ import { RouterLink, useRouter } from 'vue-router'
 const router = useRouter()
 const { isAdmin } = useAuthStore()
 const currentPath = computed(() => router.currentRoute.value.path)
+const pageNum = computed(() => router.currentRoute.value.params.page)
 const actualYear = new Date().getFullYear()
 
-const menus = [
-  { label: 'Accueil', path: '/identity/member' },
-  { label: 'Films', path: '/identity/member/movie' },
-  { label: 'Admin', path: '/identity/member/admin' },
-]
+const menus = computed(() => {
+  return [
+    { label: 'Accueil', path: '/identity/member' },
+    { label: 'Films', path: `/identity/member/movie/${pageNum.value}` },
+    { label: 'Admin', path: '/identity/member/admin' },
+  ]
+})
 </script>
 <template>
   <div class="h-[200px] bg-gray-950 p-5 flex items-center justify-between">
@@ -26,7 +29,7 @@ const menus = [
       </ul>
     </div>
 
-    <span class="self-end">&copy; {{ actualYear }} CineSnooZzz</span>
+    <span class="self-end">&copy; {{ actualYear }} CinexSnooZzz</span>
   </div>
 </template>
 <style scoped></style>

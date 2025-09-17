@@ -14,11 +14,11 @@ import { useAuthStore } from '@/stores/auth'
 // import OriginalIcon from '@/components/icons/OriginalIcon.vue'
 // import WatchlistIcon from '@/components/icons/WatchlistIcon.vue'
 
+const isAdmin = ref(true)
 const router = useRouter()
-const { isAdmin } = useAuthStore()
 const { current } = useBreakpoint()
 const restMenuItems = ref(false)
-
+const pageNum = computed(() => router.currentRoute.value.params.page)
 const currentPath = computed(() => router.currentRoute.value.path)
 const paths = router.options.routes.map((r) => r.path)
 
@@ -77,7 +77,7 @@ onMounted(() => {
           >
             <li
               @click="router.push('/identity/member/movie')"
-              :class="`cursor-pointer flex gap-3 items-center ${currentPath === '/identity/member/movie' ? 'text-amber-300' : ''}`"
+              :class="`cursor-pointer flex gap-3 items-center ${currentPath === `/identity/member/movie/${pageNum}` ? 'text-amber-300' : ''}`"
             >
               <FilmIcon />
               <span :class="`${current === 'sm' || current === 'md' ? 'hidden' : ''} font-semibold`"
@@ -131,7 +131,7 @@ onMounted(() => {
           >
             <li
               @click="router.push('/identity/member/movie')"
-              :class="`cursor-pointer flex gap-3 items-center ${currentPath === '/identity/member/movie' ? 'text-amber-300' : ''}`"
+              :class="`cursor-pointer flex gap-3 items-center ${currentPath === `/identity/member/movie/${pageNum}` ? 'text-amber-300' : ''}`"
             >
               <FilmIcon />
               <span class="font-semibold">FILMS</span>
